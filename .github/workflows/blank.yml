@@ -22,19 +22,27 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
+  
+   
        
    
 
       # Runs a single command using the runners shell
 
-       - name: lol
-      - uses : nttld/setup-ndk@v1.5.0
-      
+     
+        
+    
+       
+       
+   
       - name : monkey
-      - run : ndk-build
+      - uses: nttld/setup-ndk@v1
+        with:
+        ndk-version: r10e
 
       # Runs a set of commands using t
 
