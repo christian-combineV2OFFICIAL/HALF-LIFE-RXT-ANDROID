@@ -1,9 +1,9 @@
 /***
 *
 *	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
-*
-*	This product contains software technology licensed from Id
-*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc.
+*	
+*	This product contains software technology licensed from Id 
+*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
 *	All Rights Reserved.
 *
 *   Use, distribution, and modification of this source code and/or resulting
@@ -12,7 +12,7 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
+#pragma once
 #ifndef CUSTOM_H
 #define CUSTOM_H
 
@@ -31,7 +31,7 @@ typedef enum
 	t_decal,
 	t_generic,
 	t_eventscript,
-	t_world,			// Fake type for world, is really t_model
+	t_world			// Fake type for world, is really t_model
 } resourcetype_t;
 
 typedef struct
@@ -75,7 +75,7 @@ typedef struct customization_s
 {
 	qboolean			bInUse;		// Is this customization in use;
 	resource_t		resource;		// The resource_t for this customization
-	qboolean			bTranslated;	// Has the raw data been translated into a useable format?
+	qboolean			bTranslated;	// Has the raw data been translated into a useable format?  
 						// (e.g., raw decal .wad make into texture_t *)
 	int			nUserData1;	// Customization specific data
 	int			nUserData2;	// Customization specific data

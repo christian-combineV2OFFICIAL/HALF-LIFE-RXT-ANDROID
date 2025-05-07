@@ -12,16 +12,9 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 */
+#pragma once
 #ifndef CDLL_EXP_H
 #define CDLL_EXP_H
-
-struct tempent_s;
-struct usercmd_s;
-struct physent_s;
-struct playermove_s;
-struct mstudioevent_s;
-struct engine_studio_api_s;
-struct r_studio_interface_s;
 
 // NOTE: ordering is important!
 typedef struct cldll_func_s
@@ -42,7 +35,7 @@ typedef struct cldll_func_s
 	void	(*IN_Accumulate)( void );
 	void	(*CL_CreateMove)( float frametime, struct usercmd_s *cmd, int active );
 	int	(*CL_IsThirdPerson)( void );
-	void	(*CL_CameraOffset)( float *ofs );	// unused
+	void	(*CL_CameraOffset)( float *ofs );
 	void	*(*KB_Find)( const char *name );
 	void	(*CAM_Think)( void );		// camera stuff
 	void	(*pfnCalcRefdef)( ref_params_t *pparams );
@@ -67,13 +60,11 @@ typedef struct cldll_func_s
 	void	(*pfnDirectorMessage)( int iSize, void *pbuf );
 	int	(*pfnGetStudioModelInterface)( int version, struct r_studio_interface_s **ppinterface, struct engine_studio_api_s *pstudio );
 	void	(*pfnChatInputPosition)( int *x, int *y );
+	int	(*pfnGetPlayerTeam)( int playerIndex );
+	void	*(*pfnGetClientFactory)( void );
 	// Xash3D extension
 	int	(*pfnGetRenderInterface)( int version, render_api_t *renderfuncs, render_interface_t *callback );
 	void	(*pfnClipMoveToEntity)( struct physent_s *pe, const vec3_t start, vec3_t mins, vec3_t maxs, const vec3_t end, struct pmtrace_s *tr );
-	// Xash3D FWGS extension
-	int (*pfnTouchEvent)( int type, int fingerID, float x, float y, float dx, float dy );
-	void (*pfnMoveEvent)( float forwardmove, float sidemove );
-	void (*pfnLookEvent)( float relyaw, float relpitch );
 } cldll_func_t;
 
 #endif//CDLL_EXP_H

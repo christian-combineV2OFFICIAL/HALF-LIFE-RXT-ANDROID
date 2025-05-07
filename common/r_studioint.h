@@ -1,9 +1,9 @@
 /***
 *
 *	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
-*
-*	This product contains software technology licensed from Id
-*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc.
+*	
+*	This product contains software technology licensed from Id 
+*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
 *	All Rights Reserved.
 *
 *   Use, distribution, and modification of this source code and/or resulting
@@ -12,8 +12,7 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
-
+#pragma once
 #ifndef R_STUDIOINT_H
 #define R_STUDIOINT_H
 
@@ -26,7 +25,7 @@ typedef struct engine_studio_api_s
 	// Check to see if pointer is in the cache
 	void		*( *Cache_Check )( struct cache_user_s *c );
 	// Load file into cache ( can be swapped out on demand )
-	void		( *LoadCacheFile )( const char *path, struct cache_user_s *cu );
+	void		( *LoadCacheFile )( char *path, struct cache_user_s *cu );
 	// Retrieve model pointer for the named model
 	struct model_s	*( *Mod_ForName )( const char *name, int crash_if_missing );
 	// Retrieve pointer to studio model data block from a model
@@ -103,7 +102,7 @@ typedef struct engine_studio_api_s
 
 	// True if using D3D/OpenGL
 	int		( *IsHardware )( void );
-
+	
 	// Only called by hardware interface
 	void		( *GL_StudioDrawShadow )( void );
 	void		( *GL_SetRenderMode )( int mode );
@@ -120,7 +119,7 @@ typedef struct server_studio_api_s
 	// Check to see if pointer is in the cache
 	void		*( *Cache_Check )( struct cache_user_s *c );
 	// Load file into cache ( can be swapped out on demand )
-	void		( *LoadCacheFile )( const char *path, struct cache_user_s *cu );
+	void		( *LoadCacheFile )( char *path, struct cache_user_s *cu );
 	// Retrieve pointer to studio model data block from a model
 	void		*( *Mod_Extradata )( struct model_s *mod );
 } server_studio_api_t;
@@ -140,7 +139,7 @@ typedef struct sv_blending_interface_s
 {
 	int	version;
 
-	void	( *SV_StudioSetupBones )( struct model_s *pModel,
+	void	( *SV_StudioSetupBones )( struct model_s *pModel, 
 					float frame,
 					int sequence,
 					const vec3_t angles,

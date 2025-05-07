@@ -1,9 +1,9 @@
 /***
 *
 *	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
-*
-*	This product contains software technology licensed from Id
-*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc.
+*	
+*	This product contains software technology licensed from Id 
+*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
 *	All Rights Reserved.
 *
 *   Use, distribution, and modification of this source code and/or resulting
@@ -12,7 +12,7 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
+#pragma once
 #ifndef WADFILE_H
 #define WADFILE_H
 
@@ -20,7 +20,7 @@
 ========================================================================
 .WAD archive format	(WhereAllData - WAD)
 
-List of compressed files, that can be identify only by TYP_*
+List of compressed files, that can be identify only by TYPE_*
 
 <format>
 header:	dwadinfo_t[dwadinfo_t]
@@ -33,26 +33,19 @@ infotable	dlumpinfo_t[dwadinfo_t->numlumps]
 ========================================================================
 */
 
-#define IDWAD2HEADER	(('2'<<24)+('D'<<16)+('A'<<8)+'W')	// little-endian "WAD2" quake wads
-#define IDWAD3HEADER	(('3'<<24)+('D'<<16)+('A'<<8)+'W')	// little-endian "WAD3" half-life wads
+#define IDWAD3HEADER	(('3'<<24)+('D'<<16)+('A'<<8)+'W')
 
-// dlumpinfo_t->attribs
-#define ATTR_NONE		0	// allow to read-write
-#define ATTR_READONLY	BIT( 0 )	// don't overwrite this lump in anyway
-#define ATTR_COMPRESSED	BIT( 1 )	// not used for now, just reserved
-#define ATTR_HIDDEN		BIT( 2 )	// not used for now, just reserved
-#define ATTR_SYSTEM		BIT( 3 )	// not used for now, just reserved
+// dlumpinfo_t->compression
+#define CMP_NONE		0	// compression none
+#define CMP_LZSS		1	// LZSS compression
 
 // dlumpinfo_t->type
-#define TYP_ANY		-1	// any type can be accepted
-#define TYP_NONE		0	// unknown lump type
-#define TYP_LABEL		1	// legacy from Doom1. Empty lump - label (like P_START, P_END etc)
-#define TYP_PALETTE		64	// quake or half-life palette (768 bytes)
-#define TYP_DDSTEX		65	// contain DDS texture
-#define TYP_GFXPIC		66	// menu or hud image (not contain mip-levels)
-#define TYP_MIPTEX		67	// quake1 and half-life in-game textures with four miplevels
-#define TYP_SCRIPT		68	// contain script files
-#define TYP_COLORMAP2	69	// old stuff. build palette from LBM file (not used)
+#define TYP_QPAL		64	// quake palette
+#define TYP_QTEX		65	// probably was never used
+#define TYP_QPIC		66	// quake1 and hl pic (lmp_t)
+#define TYP_MIPTEX		67	// half-life (mip_t) previous was TYP_SOUND but never used in quake1
+#define TYP_QMIP		68	// quake1 (mip_t) (replaced with TYPE_MIPTEX while loading)
+#define TYP_RAW		69	// raw data
 #define TYP_QFONT		70	// half-life font (qfont_t)
 
 /*

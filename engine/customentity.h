@@ -1,9 +1,9 @@
 /***
 *
 *	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
-*
-*	This product contains software technology licensed from Id
-*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc.
+*	
+*	This product contains software technology licensed from Id 
+*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
 *	All Rights Reserved.
 *
 *   Use, distribution, and modification of this source code and/or resulting
@@ -12,7 +12,7 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
+#pragma once
 #ifndef CUSTOMENTITY_H
 #define CUSTOMENTITY_H
 
@@ -23,12 +23,12 @@
 #define BEAMENT_ATTACHMENT( x )	(((x)>>12) & 0xF)
 
 // Beam types, encoded as a byte
-enum
+enum 
 {
 	BEAM_POINTS = 0,
 	BEAM_ENTPOINT,
 	BEAM_ENTS,
-	BEAM_HOSE,
+	BEAM_HOSE
 };
 
 #define BEAM_FSINE		0x10

@@ -1,9 +1,9 @@
 /***
 *
 *	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
-*
-*	This product contains software technology licensed from Id
-*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc.
+*	
+*	This product contains software technology licensed from Id 
+*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
 *	All Rights Reserved.
 *
 *   Use, distribution, and modification of this source code and/or resulting
@@ -12,7 +12,7 @@
 *   without written permission from Valve LLC.
 *
 ****/
-
+#pragma once
 #ifndef NET_API_H
 #define NET_API_H
 
@@ -28,7 +28,6 @@
 // kill the request hook after receiving the first response
 #define FNETAPI_MULTIPLE_RESPONSE		( 1<<0 )
 
-struct net_response_s;
 typedef void (*net_api_response_func_t) ( struct net_response_s *response );
 
 #define NET_SUCCESS				( 0 )
@@ -64,7 +63,7 @@ typedef struct net_response_s
 typedef struct net_status_s
 {
 	// Connected to remote server?  1 == yes, 0 otherwise
-	int		connected;
+	int		connected; 
 	// Client's IP address
 	netadr_t		local_address;
 	// Address of remote server
@@ -87,7 +86,7 @@ typedef struct net_api_s
 	void		(*SendRequest)( int context, int request, int flags, double timeout, struct netadr_s *remote_address, net_api_response_func_t response );
 	void		(*CancelRequest)( int context );
 	void		(*CancelAllRequests)( void );
-	const char	*(*AdrToString)( struct netadr_s *a );
+	char		*(*AdrToString)( struct netadr_s *a );
 	int		( *CompareAdr)( struct netadr_s *a, struct netadr_s *b );
 	int		( *StringToAdr)( char *s, struct netadr_s *a );
 	const char	*(*ValueForKey)( const char *s, const char *key );
@@ -95,4 +94,4 @@ typedef struct net_api_s
 	void		(*SetValueForKey)( char *s, const char *key, const char *value, int maxsize );
 } net_api_t;
 
-#endif//NET_APIH
+#endif // NET_APIH
