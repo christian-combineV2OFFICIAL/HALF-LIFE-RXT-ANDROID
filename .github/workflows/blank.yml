@@ -24,17 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+
        
-  # RXT IS SKIDDED !!
    
-        name: Sigma
-        uses: nttld/setup-ndk@v1
-        with:
-          ndk-version: r10e
 
       # Runs a single command using the runners shell
-      - name: compile the .so's
-        run: ndk-build
+      - name : monkey
+      - uses: nttld/setup-ndk@v1.5.0
+      - run : ndk-build
 
       # Runs a set of commands using t
 
